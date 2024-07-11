@@ -3,9 +3,13 @@ const express = require("express")
 const mongoose = require("mongoose")
 
 const router=require("./route/job")
-  
+const dotenv = require('dotenv')
+
+dotenv.config();
+
+console.log( "mongoDBURI=>", process.env.DATABASE_URI);
 mongoose 
-.connect("mongodb+srv://alabhishek17:BrG6TaWtbX8X72S3@cluster0.mutzkvx.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0")   //connection and database name job_app   mongodb://localhost:27017/job_app
+.connect(process.env.DATABASE_URI)   //connection and database name job_app   mongodb://localhost:27017/job_app
 .then(()=>console.log("database connected succssfuly"))
 .catch((err) => console.log("Error connecting database", err));
 
