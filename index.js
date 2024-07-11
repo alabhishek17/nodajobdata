@@ -21,3 +21,6 @@ app.use(express.json())
 //routers
 app.use(router);
 app.listen(10000,()=> console.log(`server is connected 10000`))
+
+// const PORT = process.env.PORT || 10000;
+// app.listen(PORT, () => console.log(`Server is connected on port ${PORT}`));
