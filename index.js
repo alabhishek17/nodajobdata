@@ -7,20 +7,21 @@ const dotenv = require('dotenv')
 
 dotenv.config();
 
-console.log( "mongoDBURI=>", process.env.DATABASE_URI);
+const app=express();
+
+// middleware it help to assces boy in api 
+app.use(express.json())
+// console.log( "mongoDBURI=>", process.env.DATABASE_URI);
 mongoose 
 .connect(process.env.DATABASE_URI)   //connection and database name job_app   mongodb://localhost:27017/job_app
 .then(()=>console.log("database connected succssfuly"))
 .catch((err) => console.log("Error connecting database", err));
 
-const app=express();
 
-// middleware it help to assces boy in api 
-app.use(express.json())
 
 
 app.use("/",(req,res)=>{
-    res.sendFile(__dirname+"index.html")
+    res.sendFile(__dirname+"/index.html")
 })
 //routers
 app.use(router);
